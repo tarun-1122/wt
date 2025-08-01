@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="age.css">
+    <script>
+        function age(){
+            var fixed=new Date();
+            var dob=new Date(document.getElementById("dob").value);
+            var years=fixed.getFullYear()-dob.getFullYear();
+            var months=fixed.getMonth()-dob.getMonth();
+            var dates=fixed.getDate()-dob.getDate();
+            if(months<0){
+                years--;
+                months+=12;
+            }
+            if(dates<0){
+                months--;
+                dates+=new Date(fixed.getFullYear(),fixed.getMonth(),0).getDate();
+            }
+            document.getElementById("res").innerHTML=dates+"days "+months+"months "+years+"years";
+        }
+    </script>
+
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+            
+            
+            
+            <label>DOB : </label>
+            <br>
+            <input type="date" id="dob">
+            
+            <br><br>
+
+            <button type="submit"  style="background-color: green;" onclick="age()">calculate</button>
+
+            <button type="reset" style="background-color: orangered;">reset</button><br><br>
+            <p>AGE : </p>
+            <p id="res"></p>
+            <br>
+            
+
+
+        </div>
+    </div>    
+</body>
+</html>
